@@ -1,0 +1,8 @@
+#Sin listar el directorio
+Options All -Indexes
+
+#Prevenir el acceso al archivo .htacess
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
