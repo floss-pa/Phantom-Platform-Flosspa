@@ -15,7 +15,7 @@ Como requisitos debe usarse
 
 > * PHP 7.x + (algunas funciones del codigo todavia con PHP 5, pero no es recomendado, debido a que puede causar errores y muchas son deprecadas en PHP 7)
 > * Servidor APACHE (no he probado en otros para este lanzamiento por el momento)
-> * Base de datos MARIADB (aunque gracias a ADODB puede ser compatible con otras bases de datos, pero lea más abajo en la sección de [DB](#DB) para entender mejor el asunto)
+> * Base de datos MARIADB (aunque gracias a ADODB puede ser compatible con otras bases de datos, pero lea más abajo en la sección de [DB](#base-de-datos-feelsgood) para entender mejor el asunto)
 
 Adicionalmente, aunque lo detesten, usar XAMPP para instalar la plataforma entera no es una mala opción, pero tenga en cuenta los problemas que puede tener XAMPP a diferencia de hacer un servidor propio con PHP, MARIADB y APACHE, la versión que se use de XAMPP debe tener _PHP 7+_.
 
@@ -36,7 +36,7 @@ Este codigo escrito no tiene ningun Framework conocido (como ejemplo [Symfony](h
 
 Principalmente su vida cae en dos dependencias, [ADODB](http://adodb.org/dokuwiki/doku.php) y [PHPMailer](https://github.com/PHPMailer/PHPMailer), tiene algunas varatijas adicionales como [PHP Markdown Parsedown](http://parsedown.org/) o [PHP QRcode](https://github.com/codemasher/php-qrcode), hacen tambien algunas funciones pero son en secciones administrativas, no del participante, por lo que, debe tenerse cuidado lo que se desee usar.
 
-Por favor, en el momento no debemos usar un __timeout()__ debido a que la plataforma requiere muchas veces que no se cierre durante inactividad cuando la persona este buscando los huevos de pascua, es casi imposible andar activando a todo rato la sesión y jugar la busqueda de los huevos de pascua cuando se cierra a todo rato, sin embargo, veremos en el [TODO](#TODO) lo que falta por implementar en el codigo, ya sea PHP o Javascript.
+Por favor, en el momento no debemos usar un __timeout()__ debido a que la plataforma requiere muchas veces que no se cierre durante inactividad cuando la persona este buscando los huevos de pascua, es casi imposible andar activando a todo rato la sesión y jugar la busqueda de los huevos de pascua cuando se cierra a todo rato, sin embargo, veremos en el [TODO](#tareas-a-realizar-trollface) lo que falta por implementar en el codigo, ya sea PHP o Javascript.
 
 ### Base de Datos :feelsgood:
 ADOdb es nuestro conector en las bases de datos, por lo que no veran funciones como __mysqli_connect()__ o etc en el codigo de PHP, tiene varias funciones integradas y el interpreta la base de datos que le otorgamos, pero debe tenerse en cuenta que si es para bases de datos SQL solo debe escribirse en lenguaje SQL para hacerlo compatible con todas las posibles (Oracle, MariaDB, Postgres, etc), si es para otras bases de datos como Firebird, Netezza, SAP, Sybase, Visual Foxpro, toca verificar en la pagina de [ADODB](http://adodb.org/dokuwiki/doku.php) su sintaxis. Ahí también se encontrarán los datos de si los drivers son obsoletos, activos, etc.
