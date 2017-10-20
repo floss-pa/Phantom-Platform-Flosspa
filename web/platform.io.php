@@ -96,23 +96,11 @@ if($_SESSION["phantomuserloggedin"]==false)
           ?>
       </div>
 
-      <div class="modal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 class="modal-title">Modal title</h4>
-            </div>
-            <div class="modal-body">
-              <p>One fine body…</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- Inclusión de Modals -->
+      <?php
+        include("./modals.php");
+      ?>
+
     </div>
     <!-- END CONTENT -->
     <!-- BEGIN FOOTER -->
@@ -129,40 +117,5 @@ if($_SESSION["phantomuserloggedin"]==false)
     <script src="./javascript/video.js" type="text/javascript"></script>
     <script src="./javascript/flatui.js/flat-ui.js" type="text/javascript"></script>
     <script src="./javascript/flatui.js/application.js" type="text/javascript"></script>
-    <script type="text/javascript">
-      var states = new Bloodhound
-      ({
-        datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.word); },
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        limit: 4,
-        local: [
-          { word: "Alabama" },
-          { word: "Alaska" },
-          { word: "Arizona" },
-          { word: "Arkansas" },
-          { word: "California" },
-          { word: "Colorado" }
-        ]
-      });
-
-      states.initialize();
-
-      $('input.tagsinput').tagsinput();
-
-      $('input.tagsinput-typeahead').tagsinput('input').typeahead(null,
-      {
-        name: 'states',
-        displayKey: 'word',
-        source: states.ttAdapter()
-      });
-
-      $('input.typeahead-only').typeahead(null,
-      {
-        name: 'states',
-        displayKey: 'word',
-        source: states.ttAdapter()
-      });
-
-    </script>
   </body>
 </html>

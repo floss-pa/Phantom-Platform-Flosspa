@@ -44,6 +44,7 @@
 $dragonactive=nihil_decode($_GET["dash"]);
 $dragonsection01="";
 $dragonsection02="";
+$dragonsection03="";
 $dragoncurrentactive='class="active"';
 if($dragonactive==1)
 {
@@ -53,6 +54,11 @@ if($dragonactive==1)
 else if($dragonactive==2)
 {
   $dragonsection02='class="active"';
+  $dragoncurrentactive="";
+}
+else if($dragonactive==3)
+{
+  $dragonsection03='class="active"';
   $dragoncurrentactive="";
 }
 else
@@ -80,12 +86,15 @@ else
             <li <?php echo $dragonsection02; ?>>
               <a href="./record.io.php?lang=<?php echo $phantlang?>&dash=<?php echo nihil_encode("2"); ?>"><span class="fa fa-table"></span>&nbsp;&nbsp;Tablero de Puntuacion</a>
             </li>
+            <li <?php echo $dragonsection03; ?>>
+              <a href="./eventlist.io.php?lang=<?php echo $phantlang?>&dash=<?php echo nihil_encode("3"); ?>"><span class="fa fa-list"></span>&nbsp;&nbsp;Lista Completa del Evento</a>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
               <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-circle"></i>&nbsp;&nbsp;<?php echo $_SESSION["phantomuser"]; ?> <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="javascript:;"><i class="fa fa-diamond"></i> Detalles</a></li>
+                <li><a href="javascript:;" data-toggle="modal" data-target="#phantusersettings"><i class="fa fa-diamond"></i> Detalles</a></li>
                 <li class="divider"></li>
                 <li><a href="./login.php?lang=<?php echo nihil_encode("ES"); ?>"><i class="fa fa-power-off"></i> Salir</a></li>
               </ul>

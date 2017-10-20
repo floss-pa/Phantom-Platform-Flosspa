@@ -1,6 +1,7 @@
 <?php
+
 /*
-* whatis.io.php
+* record.php
 *
 * luis Daniel Mora Delgado @ BlackBohr | @fobos
 *
@@ -47,6 +48,85 @@ if($_SESSION["phantomuserloggedin"]==false)
   //Redirect To Login if Navigator is forced
   header("Location: ./login.php?lang=".$phantlang);
 }
+
+//Contador para aplicar mas sencillo ciertos iconos
+$yzx=1;
+//Para probar la hora, luego debe borrarse
+$witching_hour="12:20:00";
+//Ejecuta la accion de consulta para llenar la lista del evento
+$hellbringereventlist=$phantconnection01->Execute("SELECT * FROM subeventos WHERE codigoevento='".$hellevent."' ORDER BY horainicio ASC ");
+while($hellbringereventdata=$hellbringereventlist->FetchRow())
+{
+  $hellbringerusercode=$hellbringereventdata["codigousuario"];
+  $hellbringerusertopictype=$hellbringereventdata["tipotema"];
+  $hellbringerusertopic=$hellbringereventdata["tema"];
+  $hellbringerlocation=$hellbringereventdata["ubicacion"];
+  $witchinghourbegin=$hellbringereventdata["horainicio"];
+  $witchinghourend=$hellbringereventdata["horafinal"];
+
+  //Traer el nombre del usuario organizador
+  $hellbringerusernamequery=$phantconnection01->Execute("SELECT nombreusuario FROM usuarios WHERE codigousuario='".$hellbringerusercode."' ");
+  while($hellbringerusernamedata=$hellbringerusernamequery->FetchRow())
+  {
+    $hellbringerusername=$hellbringerusernamedata["nombreusuario"];
+  }
+
+  //Marca la lista si ya se hizo la actividad, sino, no se marca
+  if($witching_hour<$witchinghourbegin)
+  {
+    $witchinghourpass='';
+    $hellcolor="color:#2DF535;";
+  }
+  else if ($witching_hour>$witchinghourbegin && $witching_hour<$witchinghourend)
+  {
+    $witchinghourpass='';
+    $hellcolor="color:#F5BA2D;";
+  }
+  else if($witching_hour>$witchinghourend)
+  {
+    $witchinghourpass='class="todo-done"';
+    $hellcolor="color:#A40403;";
+  }
+
+  //Para Bienvenida, el icono cambia
+  if($yzx==1)
+  {
+    $hellicon='<i class="fa fa-home" style="color:#F5BA2D;"></i>';
+  }
+  else
+  {
+    //Para, Talleres, Conferencias, Almuerzo o Merienda, el icono cambia
+    if($hellbringerusertopictype=="ALMUERZO")
+    {
+      $hellicon='<i class="fa fa-cutlery" style="color:#F5BA2D;"></i>';
+    }
+    else if($hellbringerusertopictype=="CONFERENCIA")
+    {
+      $hellicon='<i class="fa fa-users"></i>';
+    }
+    else if($hellbringerusertopictype=="TALLERES")
+    {
+      $hellicon='<i class="fa fa-handshake-o"></i>';
+    }
+  }
+
+  //Falta un icono para indicar la finalizacion del evento
+
+  $helllistconferences.='
+  <li '.$witchinghourpass.'>
+    <div class="todo-icon">'.$hellicon.'</div>
+    <div class="todo-content">
+      <h4 class="todo-name">
+        '.$hellbringerusertopic.'&ensp;&ensp;&ensp;<strong style="'.$hellcolor.'">'.$witchinghourbegin.' - '.$witchinghourend.'</strong>
+      </h4>
+      Ubicación: '.$hellbringerlocation.'. Hecho por: '.$hellbringerusername.'
+    </div>
+  </li>
+  ';
+
+  //Incrementa el Contador
+  $yzx++;
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -84,26 +164,19 @@ if($_SESSION["phantomuserloggedin"]==false)
     <!-- BEGIN CONTENT -->
     <div class="container">
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="col-xs-12">
-        <div class="jumbotron">
-          <table style="border:none">
-            <tr>
-              <td style="width:50%;">
-                <h1>¿Qué es Software Freedom Day (SFD)?</h1>
-              </td>
-              <td style="width:50%;">
-                <img src="images/logos/software freedom day.png" alt="SFD" />
-              </td>
-            </tr>
-          </table>
-          <p><strong>Software Freedom Day (SFD)</strong> is an annual worldwide celebration of Free Software. SFD is a public education effort with the aim of increasing awareness of Free Software and its virtues, and encouraging its use.</p>
-          <p><strong>Software Freedom Day</strong> was established in 2004 and was first observed on 28 August of that year. About 12 teams participated in the first Software Freedom Day. Since that time it has grown in popularity and every year we have more than 300 events organized by over 100 cities from the world.</p>
-          <hr />
-          <p><strong>Software Freedom Day (SFD)</strong> es una celebración de Software Libre realizada anualmente alrededor del mundo. SFD es un esfuerzo de educación pública con el objetivo de aumentar la conciencia del Software Libre y sus virtudes, y alentar su uso.</p>
-          <p><strong>Software Freedom Day</strong> se estableció en el 2004 y se celebró por primera vez el 28 de agosto de ese año. Alrededor de 12 equipos participaron en el primer Software Freedom Day. Desde entonces ha crecido en popularidad y cada año más de 300 eventos son organizados en más de 100 ciudades del mundo.  </p>
-          <blockquote>
-          <p><strong>Fuente:</strong> <a href="https://www.softwarefreedomday.org/">SoftwareFreedomDay.org</a></p>
-          </blockquote>
+      <div class="jumbotron">
+        <div class="row">
+          <div class="col-xs-12">
+            <h2 class="phantom_title"><i class="fa fa-list" style="color:#2C3234;"></i> Listado del Evento: <?php echo $helleventname; ?></h2>
+            <div class="todo">
+              <div class="todo-search">
+                <input class="todo-search-field" type="search" value="" placeholder="Search" />
+              </div>
+              <ul>
+                <?php echo $helllistconferences; ?>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
 

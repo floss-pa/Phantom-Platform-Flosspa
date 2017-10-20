@@ -48,19 +48,25 @@
 
 //Contador para aplicar mas sencillo ciertos iconos
 $yzx=1;
+//Para probar la hora, luego debe borrarse
+$witching_hour="12:20:00";
 //Ejecuta la accion de consulta para llenar la lista del evento
-$hellbringereventlist=$phantconnection01->Execute("SELECT * FROM subeventos WHERE codigoevento='".$hellevent."' ORDER BY fechainicio ASC ");
+$hellbringereventlist=$phantconnection01->Execute("SELECT * FROM subeventos WHERE codigoevento='".$hellevent."' AND horainicio>'".$witching_hour."' ORDER BY horainicio ASC LIMIT 5 ");
 while($hellbringereventdata=$hellbringereventlist->FetchRow())
 {
   $hellbringerusercode=$hellbringereventdata["codigousuario"];
   $hellbringerusertopictype=$hellbringereventdata["tipotema"];
   $hellbringerusertopic=$hellbringereventdata["tema"];
   $hellbringerlocation=$hellbringereventdata["ubicacion"];
-  $witchinghourbegin=$hellbringereventdata["fechainicio"];
-  $witchinghourend=$hellbringereventdata["fechafinal"];
+  $witchinghourbegin=$hellbringereventdata["horainicio"];
+  $witchinghourend=$hellbringereventdata["horafinal"];
 
-  //Para probar la hora, luego debe borrarse
-  $witching_hour="12:20:00";
+  //Traer el nombre del usuario organizador
+  $hellbringerusernamequery=$phantconnection01->Execute("SELECT nombreusuario FROM usuarios WHERE codigousuario='".$hellbringerusercode."' ");
+  while($hellbringerusernamedata=$hellbringerusernamequery->FetchRow())
+  {
+    $hellbringerusername=$hellbringerusernamedata["nombreusuario"];
+  }
 
   //Marca la lista si ya se hizo la actividad, sino, no se marca
   if($witching_hour<$witchinghourbegin)
@@ -79,10 +85,15 @@ while($hellbringereventdata=$hellbringereventlist->FetchRow())
     $hellcolor="color:#A40403;";
   }
 
-  //Para Bienvenida, el icono cambia
+  //Inicializa vacia, solamente se llena cuando es un evento cercano
+  $hellmessage="";
+
+  //Para el evento que va a seguir, el icono cambia y el color tambien, manda adicionalmente un mensaje
   if($yzx==1)
   {
-    $hellicon='<i class="fa fa-home" style="color:#F5BA2D;"></i>';
+    $hellicon='<i class="fa fa-gear" style="color:#F5BA2D;"></i>';
+    $hellmessage="¡EVENTO COMENZANDO!";
+    $hellcolor="color:#FF510F;";
   }
   else
   {
@@ -108,9 +119,9 @@ while($hellbringereventdata=$hellbringereventlist->FetchRow())
     <div class="todo-icon">'.$hellicon.'</div>
     <div class="todo-content">
       <h4 class="todo-name">
-        '.$hellbringerusertopic.'&ensp;&ensp;&ensp;<strong style="'.$hellcolor.'">'.$witchinghourbegin.' - '.$witchinghourend.'</strong>
+        '.$hellbringerusertopic.'&ensp;&ensp;&ensp;<strong style="'.$hellcolor.'">'.$hellmessage.' '.$witchinghourbegin.' - '.$witchinghourend.'</strong>
       </h4>
-      Ubicación: '.$hellbringerlocation.'. Hecho por: '.$hellbringerusercode.'
+      Ubicación: '.$hellbringerlocation.'. Hecho por: '.$hellbringerusername.'
     </div>
   </li>
   ';

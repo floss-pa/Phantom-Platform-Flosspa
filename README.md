@@ -55,7 +55,7 @@ En la fuente se incluira los SQL de la base de datos. Y también uno general par
 - [x] Recuperar Contraseña
 - [x] Varias Validaciones en el Login
 - [x] Tablero de Puntuaciones
-- [ ] Modals
+- [x] Modals
 - [ ] Acciones en el Tablero
 - [x] Lista de eventos del evento general
 - [ ] Información del Evento (debe ser dinámica, dependiendo del evento que se celebre y usando el Markdown parser)

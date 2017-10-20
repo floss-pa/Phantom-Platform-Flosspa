@@ -131,7 +131,7 @@ session_destroy();
           ?>
           <form class="login-form" name="login_form_begin" id="login_form_begin" action="../phant.begin.io.php?lang=<?php echo nihil_encode($phantlang); ?>" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
-                  <input id="logusername" name="logusername" class="form-control login-field" type="text" placeholder="Nombre" data-rule-required="true" data-msg-required="Introduzca un Nombre de Usuario." <?php echo $phantlock; ?>/>
+                  <input id="logusername" name="logusername" class="form-control login-field" type="text" placeholder="Nombre de Usuario" data-rule-required="true" data-msg-required="Introduzca un Nombre de Usuario." <?php echo $phantlock; ?>/>
                   <label class="login-field-icon fui-user" for="logusername"></label>
                 </div>
                 <div class="form-group">
@@ -156,7 +156,7 @@ session_destroy();
                 <label class="login-field-icon fui-mail" for="regmail"></label>
               </div>
               <div class="form-group">
-                <input id="regusername" name="regusername" class="form-control login-field" type="text" placeholder="Nombre" data-rule-required="true" data-msg-required="Introduzca un Nombre de Usuario."/>
+                <input id="regusername" name="regusername" class="form-control login-field" type="text" placeholder="Nombre de Usuario" data-rule-required="true" data-msg-required="Introduzca un Nombre de Usuario."/>
                 <label class="login-field-icon fui-user" for="regusername"></label>
               </div>
               <div class="form-group">

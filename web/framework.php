@@ -39,6 +39,7 @@
 *
 * This platform is made for FLOSSPA and events made by FLOSSPA, please visit https://floss-pa.net/
 */
+include("../functions.php");
 ?>
 <!DOCTYPE html>
 <html>

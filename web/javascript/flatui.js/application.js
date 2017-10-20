@@ -140,6 +140,16 @@ String.prototype.repeat = function (num) {
     }
   }); */
 
+  //Messenger
+  var majoras = "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\nMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\nMMMMMMMMMMMMMMMMcWMMMMMMMMMMMMMMMMMcMMMMMMMMMMMMMMMM\nMMMMMMMMMMMMMMMM.:MMMMMMMMMMMMMMMMx MMMMMMMMMMMMMMMM\nMMMMMMMMMMMMMMMM. kMMMMMMMMMMMMMMX  WMMMMMMMMMMMMMMM\nMMMMMMMMMMMMMMMM.  WMMMMMMMMMMMMM.  NMMMMMMMMMMMMMMM\nMMMMMMMMMMMMMWK0'..:O0OXXMMNX00kl...0OWMMMMMMMMMMMMM\nMMMMMMMMMMMW0o0kkkoxolkll. dodolxddkOOdkWMMMMMMMMMMM\nMMMMMMMMMMNl;;o:d,c:;'ol,,.,ld,,:c;l:o:;cKMMMMMMMMMM\nMMMMMMMMMM' l.':......,oc. cd,......;;.l  MMMMMMMMMM\nMMMMMMMMMM. l.'.  .   . oc,k.'   ..  ,.l  WMMMMMMMMM\nMMMMMMMMNx. c..  xXx   ':d:x..  xXx. ..l .dKMMMMMMMM\nMMMMMOc.    ::.   .   ,..X0:.'   ..  .,:.    ;kWMMMM\nMMMWkxkOO0Kx,co,.....;c. ,, .;:.....'cl'dK00OkxxNMMM\nMMMMMMMMWd.   ';ollcco; ;. ,.;llcclo:'    lNMMMMMMMM\nMMMMMMMx.':dOXk      dxc .. cdk      oN0dc,.oWMMMMMM\nMMMMMMWWMMMMN,   ;l.:lc. ..  :oc':c.  .KMMMMWWMMMMMM\nMMMMMMMMMMMK..oKMM.  ..  c:   ,   NMXd' kMMMMMMMMMMM\nMMMMMMMMMMMOWMMMMk  ;NMKl..c0MWl  cMMMMWOWMMMMMMMMMM\nMMMMMMMMMMMMMMMMM'.0MMMMMMMMMMMMX' MMMMMMMMMMMMMMMMM\nMMMMMMMMMMMMMMMMMdMMMMMMMMMMMMMMMMkXMMMMMMMMMMMMMMMM\nMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\nMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+
+  console.log("%c"+majoras+"\n\nHey cowboy! So, i have feel you opened my console... \n\nWhy? Why you do this? You want to hack my system? like, for real?! Have you ever thought the consequences of your actions?! \nI AM A REAL living system, i can chase you on your dreams if you try to do something to me, i can follow you everywhere, I AM PHANTOM!! \n\nHave you met with a terrible fate, haven't you? :)", 'background: #2C3234; color: #FF5421');
+
+  $('#phantusersettings').on('shown.bs.modal', function (e)
+  {
+      console.log("%c"+majoras+"\n\nHELLO USER SETTINGS!, I'm pleased to meet you... \nDon't try anything stupid...", 'background: #2C3234; color: #FF5421');
+  });
+
 })(jQuery);
 
 /* ========================================================================
