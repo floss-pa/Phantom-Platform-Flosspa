@@ -45,6 +45,12 @@ Lastimosamente bases de datos de otro tipo como MongoDB, o bases de datos NoSQL,
 
 En la fuente se incluira los SQL de la base de datos. Y también uno general para importar. Las tablas tienen relaciones entre ellas, la principal es usuarios, **NO BORRE LA TABLA USUARIOS** :goberserk:, al borrarla, usted habrá borrado todas las demás tablas por que estan relacionadas con esta, y tiene como resticciones que si se borra o actualiza el codigo del usuario, puede borrar todo el contenido de estas, a excepción de los eventos y de los huevos de pascua, sin embargo, quedarían obsoletas.
 
+#### ¿Como importarla?
+
+La vida de la plataforma es la base de datos, tenga en cuenta como se menciono previamente que solo funciona con lenguajes de SQL, por favor, previamente lea el archivo **config.io.php**.
+
+En **config.io.php** que esta ubicado en **web/php/.** se detallan el usuario y contraseña para acceder a la base de datos, se detalla el conector que debe tener (sea MySqli, PostgreSQL, etc) como un driver gracias a **adoDB**, tenga en cuenta que si se instala en una maquina local, debe cambiarse la dirección (si ya no es localhost), colocar un usuario existente en la base de datos o crear el usuario en la base de datos, crear la misma base de datos, y seleccionar el driver.
+
 ### Tareas a Realizar :trollface:
 - [x] Base de la plataforma
 - [x] Registrar usuarios
@@ -60,11 +66,12 @@ En la fuente se incluira los SQL de la base de datos. Y también uno general par
 - [x] Lista de eventos del evento general
 - [ ] Información del Evento (debe ser dinámica, dependiendo del evento que se celebre y usando el Markdown parser)
 - [ ] Integración con Redes Sociales
-- [ ] Personalización del Usuario
+- [-] Personalización del Usuario
 - [ ] Dinamismo del footer en el caso de los patrocinadores
-- [ ] Opciones del Usuario
-- [ ] Cuando se cierre el evento, nadie puede acceder
+- [-] Opciones del Usuario
+- [-] Cuando se cierre el evento, nadie puede acceder
 - [ ] Cuando se cierre el navegador, el usuario debe salir de la sesión, sino provoca el primer gran bug de la plataforma
+- [ ] Eventos CRON.
 
 
 ### Comparación de Versiones :japanese_ogre:
